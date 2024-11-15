@@ -1,0 +1,40 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    height: 100vh;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.5rem;
+}
+
+h2 {
+    color: #555;
+    font-size: 2rem;
+}
+
+.btn {
+    margin-top: 20px;
+}
+
+.container {
+    margin-top: 50px;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.user-info {
+    font-size: 1rem;
+}
+
+footer {
+    background-color: #f1f1f1;
+    color: #333;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
