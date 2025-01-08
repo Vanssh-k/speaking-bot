@@ -29,7 +29,6 @@ networkx==3.4.2
 numba==0.60.0
 numpy==2.0.2
 openai==1.54.4
-openai-whisper @ git+https://github.com/openai/whisper.git@173ff7dd1d9fb1c4fddea0d41d704cfefeb8908c
 pillow==11.0.0
 proglog==0.1.10
 pydantic==2.9.2

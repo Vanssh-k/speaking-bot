@@ -6,10 +6,9 @@ from fastapi.security import OAuth2AuthorizationCodeBearer
 from starlette.middleware.sessions import SessionMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
 from pydantic import BaseModel
-import uuid
 import os
 from moviepy.editor import VideoFileClip
-import whisper
+import assemblyai as aai
 from openai import OpenAI
 from dotenv import load_dotenv
 from httpx import AsyncClient
@@ -27,6 +26,9 @@ openAIClient = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
 # MongoDB connection
 mongoClient = AsyncIOMotorClient(os.getenv("MONGODB_URI"))
 db = mongoClient['test']
+
+aai.settings.api_key = os.getenv('ASSEMBLY_API_KEY')
+transcriber = aai.Transcriber()
 
 # User model
 class User(BaseModel):
@@ -73,9 +75,8 @@ def extract_audio_from_video(video_file, audio_file):
 
 # Function to transcribe audio using Whisper
 def transcribe_audio(audio_file):
-    model = whisper.load_model("base")
-    result = model.transcribe(audio_file)
-    return result['text']
+    result = transcriber.transcribe(audio_file)
+    return result.text
 
 async def analyze_text(email, transcription):
 
